@@ -59,6 +59,8 @@ public class Account {
         return AccountDto
                 .builder()
                 .accountType(accountType)
+                .balance(balance)
+                .clientDto(client != null ? client.toDto() : null)
                 .build();
     }
 }

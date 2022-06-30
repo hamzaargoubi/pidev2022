@@ -7,6 +7,9 @@ import org.esprit.ib.services.interfaces.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 @Service
 public class AccountService implements IAccountService {
 
@@ -16,5 +19,13 @@ public class AccountService implements IAccountService {
     @Override
     public Account save(AccountDto accountDto) {
         return accountRepository.save(accountDto.toEntity());
+    }
+
+    @Override
+    public Collection<AccountDto> getAll() {
+        return accountRepository.findAll()
+                .stream()
+                .map(Account::toDto)
+                .collect(Collectors.toList());
     }
 }

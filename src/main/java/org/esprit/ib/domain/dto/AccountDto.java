@@ -13,10 +13,10 @@ public class AccountDto {
 
     private AccountType accountType;
     private double balance;
+    private ClientDto clientDto;
 
     public Account toEntity() {
-        return Account
-                .builder()
+        return Account.builder()
                 .accountType(accountType)
                 .build();
     }
