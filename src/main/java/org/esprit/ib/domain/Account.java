@@ -1,10 +1,11 @@
 package org.esprit.ib.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.esprit.ib.domain.dto.AccountDto;
 import org.esprit.ib.domain.types.AccountType;
+import org.esprit.ib.utils.CodeGenerator;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +14,8 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Account {
 
@@ -22,12 +25,15 @@ public class Account {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
+    @Type(type = "uuid-char")
     private UUID uuid;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
+    @Column(name = "type", nullable = false)
     private AccountType accountType;
+
+    private final String serialCode = CodeGenerator.generate();
 
     private double balance;
 
@@ -48,4 +54,11 @@ public class Account {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "beneficiary")
     private List<Loan> loans;
 
+
+    public AccountDto toDto() {
+        return AccountDto
+                .builder()
+                .accountType(accountType)
+                .build();
+    }
 }
