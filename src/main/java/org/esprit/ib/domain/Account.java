@@ -58,6 +58,7 @@ public class Account {
     public AccountDto toDto() {
         return AccountDto
                 .builder()
+                .uuid(uuid)
                 .accountType(accountType)
                 .build();
     }

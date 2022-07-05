@@ -4,6 +4,8 @@ import lombok.*;
 import org.esprit.ib.domain.Account;
 import org.esprit.ib.domain.types.AccountType;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @Builder
@@ -11,6 +13,7 @@ import org.esprit.ib.domain.types.AccountType;
 @NoArgsConstructor
 public class AccountDto {
 
+    private UUID uuid;
     private AccountType accountType;
     private double balance;
 
