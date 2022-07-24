@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("account")
+@RequestMapping("accounts")
 public class AccountController {
 
     @Autowired
