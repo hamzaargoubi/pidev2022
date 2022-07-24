@@ -1,4 +1,4 @@
-package org.esprit.ib.domain;
+package org.esprit.ib.domain.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,13 +7,14 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Comment {
+public class Post {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -25,11 +26,12 @@ public class Comment {
     @Type(type = "uuid-char")
     private UUID uuid;
 
+    private String title;
     private String text;
-    @ManyToOne
-    @JoinColumn(name = "post")
-    private Post post;
     @ManyToOne
     @JoinColumn(name = "client")
     private Client client;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Comment> comments;
 }

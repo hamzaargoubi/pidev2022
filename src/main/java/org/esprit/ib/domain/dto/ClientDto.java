@@ -2,7 +2,7 @@ package org.esprit.ib.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.esprit.ib.domain.Client;
+import org.esprit.ib.domain.entities.Client;
 import org.esprit.ib.domain.embeddables.Credentials;
 import org.esprit.ib.domain.types.ClientType;
 

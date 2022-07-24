@@ -1,4 +1,4 @@
-package org.esprit.ib.configurations;
+package org.esprit.ib.infrastracture.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

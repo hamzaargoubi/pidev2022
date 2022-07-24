@@ -1,6 +1,6 @@
 package org.esprit.ib.repositories;
 
-import org.esprit.ib.domain.Client;
+import org.esprit.ib.domain.entities.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

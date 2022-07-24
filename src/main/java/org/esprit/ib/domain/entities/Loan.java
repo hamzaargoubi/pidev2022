@@ -1,4 +1,4 @@
-package org.esprit.ib.domain;
+package org.esprit.ib.domain.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

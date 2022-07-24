@@ -1,6 +1,6 @@
 package org.esprit.ib.repositories;
 
-import org.esprit.ib.domain.Account;
+import org.esprit.ib.domain.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

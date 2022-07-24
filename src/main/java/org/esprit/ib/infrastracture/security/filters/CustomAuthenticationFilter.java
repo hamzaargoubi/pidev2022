@@ -1,4 +1,4 @@
-package org.esprit.ib.security.filters;
+package org.esprit.ib.infrastracture.security.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

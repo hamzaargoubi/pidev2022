@@ -1,7 +1,7 @@
-package org.esprit.ib.security;
+package org.esprit.ib.infrastracture.security;
 
 import lombok.extern.log4j.Log4j2;
-import org.esprit.ib.domain.Client;
+import org.esprit.ib.domain.entities.Client;
 import org.esprit.ib.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;

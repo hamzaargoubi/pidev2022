@@ -1,4 +1,4 @@
-package org.esprit.ib.domain;
+package org.esprit.ib.domain.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,14 +7,14 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Post {
+public class Transaction {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -26,12 +26,15 @@ public class Post {
     @Type(type = "uuid-char")
     private UUID uuid;
 
-    private String title;
-    private String text;
     @ManyToOne
-    @JoinColumn(name = "client")
-    private Client client;
+    @JoinColumn(name = "source", referencedColumnName = "id")
+    private Account source;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
-    private List<Comment> comments;
+    @ManyToOne
+    @JoinColumn(name = "recipient", referencedColumnName = "id")
+    private Account recipient;
+
+    private String description;
+    private double amount;
+    private Date date;
 }

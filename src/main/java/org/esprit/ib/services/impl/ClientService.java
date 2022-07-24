@@ -1,6 +1,6 @@
-package org.esprit.ib.services;
+package org.esprit.ib.services.impl;
 
-import org.esprit.ib.domain.Client;
+import org.esprit.ib.domain.entities.Client;
 import org.esprit.ib.domain.dto.ClientDto;
 import org.esprit.ib.repositories.ClientRepository;
 import org.esprit.ib.services.interfaces.IClientService;

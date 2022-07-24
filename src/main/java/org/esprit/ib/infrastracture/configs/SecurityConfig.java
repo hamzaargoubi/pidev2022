@@ -1,8 +1,8 @@
-package org.esprit.ib.configurations;
+package org.esprit.ib.infrastracture.configs;
 
 import lombok.RequiredArgsConstructor;
-import org.esprit.ib.security.filters.CustomAuthenticationFilter;
-import org.esprit.ib.security.filters.CustomAuthorizationFilter;
+import org.esprit.ib.infrastracture.security.filters.CustomAuthenticationFilter;
+import org.esprit.ib.infrastracture.security.filters.CustomAuthorizationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

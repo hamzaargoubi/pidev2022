@@ -2,7 +2,7 @@ package org.esprit.ib.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.esprit.ib.domain.Account;
+import org.esprit.ib.domain.entities.Account;
 import org.esprit.ib.domain.types.AccountType;
 
 import java.util.UUID;

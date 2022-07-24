@@ -1,6 +1,6 @@
 package org.esprit.ib.controllers;
 
-import org.esprit.ib.domain.Transaction;
+import org.esprit.ib.domain.entities.Transaction;
 import org.esprit.ib.services.interfaces.ITransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
