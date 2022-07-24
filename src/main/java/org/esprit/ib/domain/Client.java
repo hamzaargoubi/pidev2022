@@ -51,6 +51,7 @@ public class Client {
 
     public ClientDto toDto() {
         return ClientDto.builder()
+                .uuid(uuid)
                 .clientType(clientType)
                 .email(credentials.getEmail())
                 .name(name)

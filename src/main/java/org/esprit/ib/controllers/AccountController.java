@@ -1,6 +1,5 @@
 package org.esprit.ib.controllers;
 
-import org.esprit.ib.domain.Account;
 import org.esprit.ib.domain.dto.AccountDto;
 import org.esprit.ib.services.interfaces.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +16,19 @@ public class AccountController {
     IAccountService accountService;
 
     @PostMapping("/save")
-    public Account save(@RequestBody AccountDto accountDto){
-        return accountService.save(accountDto);
+    public boolean save(@RequestBody AccountDto accountDto) {
+        accountService.save(accountDto);
+        return true;
     }
 
     @GetMapping
-    public Collection<AccountDto> getAll(){
+    public Collection<AccountDto> getAll() {
         return accountService.getAll();
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") UUID uuid){
-        return accountService.delete(uuid);
+    public boolean delete(@PathVariable("id") UUID uuid) {
+        accountService.delete(uuid);
+        return true;
     }
 }

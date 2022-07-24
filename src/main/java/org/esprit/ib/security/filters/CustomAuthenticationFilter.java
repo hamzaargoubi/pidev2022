@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
+import org.esprit.ib.domain.constants.JWTSecret;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -48,22 +49,23 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                                             FilterChain chain, Authentication authentication)
             throws IOException {
         User user = (User) authentication.getPrincipal();
-        Algorithm algorithm = Algorithm.HMAC256("secret".getBytes(StandardCharsets.UTF_8));
+        Algorithm algorithm = Algorithm.HMAC256(JWTSecret.SECRET.getBytes(StandardCharsets.UTF_8));
         String accessToken = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 5 * 60 * 1000))
                 .withIssuer(request.getRequestURL().toString())
-              //  .withClaim("roles", List.of("TestClaim"))
+                //  .withClaim("roles", List.of("TestClaim"))
                 .sign(algorithm);
 
         String refreshToken = JWT.create()
                 .withSubject(user.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 30 * 60 * 1000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 120 * 60 * 1000))
                 .withIssuer(request.getRequestURL().toString())
                 .sign(algorithm);
         Map<String, String> map = new HashMap<>();
-        map.put("access_token", accessToken);
-        map.put("refresh_token", refreshToken);
+        map.put("response", "access_token and refresh_token in Headers");
+        response.setHeader("access_token", accessToken);
+        response.setHeader("refresh_token", refreshToken);
         response.setContentType(APPLICATION_JSON_VALUE);
         new ObjectMapper().writeValue(response.getOutputStream(), map);
     }
