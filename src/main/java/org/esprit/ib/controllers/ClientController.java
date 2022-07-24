@@ -1,7 +1,7 @@
 package org.esprit.ib.controllers;
 
-import org.esprit.ib.domain.dto.AccountDto;
-import org.esprit.ib.services.interfaces.IAccountService;
+import org.esprit.ib.domain.dto.ClientDto;
+import org.esprit.ib.services.interfaces.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,26 +9,26 @@ import java.util.Collection;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("accounts")
-public class AccountController {
+@RequestMapping("clients")
+public class ClientController {
 
     @Autowired
-    IAccountService accountService;
+    IClientService clientService;
 
     @PostMapping("/save")
-    public boolean save(@RequestBody AccountDto accountDto) {
-        accountService.save(accountDto);
+    public boolean save(@RequestBody ClientDto clientDto) {
+        clientService.save(clientDto);
         return true;
     }
 
     @GetMapping
-    public Collection<AccountDto> getAll() {
-        return accountService.getAll();
+    public Collection<ClientDto> getAll() {
+        return clientService.getAll();
     }
 
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") UUID uuid) {
-        accountService.delete(uuid);
+        clientService.delete(uuid);
         return true;
     }
 }

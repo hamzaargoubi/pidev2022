@@ -1,6 +1,6 @@
 package org.esprit.ib.services.interfaces;
 
-import org.esprit.ib.domain.Transaction;
+import org.esprit.ib.domain.entities.Transaction;
 
 import java.util.List;
 import java.util.UUID;

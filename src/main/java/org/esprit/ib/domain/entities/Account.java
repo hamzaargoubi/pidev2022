@@ -1,4 +1,4 @@
-package org.esprit.ib.domain;
+package org.esprit.ib.domain.entities;
 
 import lombok.*;
 import org.esprit.ib.domain.dto.AccountDto;
@@ -60,6 +60,8 @@ public class Account {
                 .builder()
                 .uuid(uuid)
                 .accountType(accountType)
+                .balance(balance)
+                .clientDto(client != null ? client.toDto() : null)
                 .build();
     }
 }
