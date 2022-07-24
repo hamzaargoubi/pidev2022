@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,5 +28,11 @@ public class AccountService implements IAccountService {
                 .stream()
                 .map(Account::toDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean delete(UUID uuid) {
+        accountRepository.deleteById(uuid);
+        return true;
     }
 }

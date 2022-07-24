@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("account")
@@ -23,5 +24,10 @@ public class AccountController {
     @GetMapping
     public Collection<AccountDto> getAll(){
         return accountService.getAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") UUID uuid){
+        return accountService.delete(uuid);
     }
 }
