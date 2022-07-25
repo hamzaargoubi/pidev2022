@@ -34,4 +34,10 @@ public class ClientService implements IClientService {
     public void delete(UUID uuid) {
         clientRepository.deleteById(uuid);
     }
+
+	@Override
+	public Client getClientByEmail(String email) {
+		// TODO Auto-generated method stub
+		return clientRepository.findByEmail(email);
+	}
 }
