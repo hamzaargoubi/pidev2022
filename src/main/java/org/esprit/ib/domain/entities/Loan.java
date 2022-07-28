@@ -1,8 +1,7 @@
 package org.esprit.ib.domain.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.esprit.ib.domain.dto.LoanDto;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
@@ -13,6 +12,8 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Loan {
 
@@ -35,4 +36,16 @@ public class Loan {
     @ManyToOne
     @JoinColumn(name = "beneficiary")
     private Account beneficiary;
+
+    public LoanDto toDto() {
+        return LoanDto.builder()
+                .uuid(uuid)
+                .beneficiary(beneficiary != null ? beneficiary.toDto() : null)
+                .initialDate(initialDate)
+                .maturityDate(maturityDate)
+                .installments(installments)
+                .totalAmount(totalAmount)
+                .paidAmount(paidAmount)
+                .build();
+    }
 }
